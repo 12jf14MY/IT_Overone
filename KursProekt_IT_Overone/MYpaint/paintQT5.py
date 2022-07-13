@@ -7,8 +7,13 @@ import sys
 
 # Класс создание главного Окна
 class Window(QMainWindow):
+
+
     def __init__(self):
         super().__init__()
+        self.initUI()
+
+    def initUI(self):
 
         # Название окна
         self.setWindowTitle("===ГАРЦУЮЩИЙ КАРАНДАШиК===")
@@ -302,17 +307,18 @@ class Window(QMainWindow):
 
 
 # ВЫПОЛНЕНИЕ <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+if __name__ == '__main__':
 
 # создаем приложения Pyqt5
-App = QApplication(sys.argv)
+    App = QApplication(sys.argv)
 
 # создаем объект класса window
-window2 = Window()
+    window2 = Window()
 
-# выполняем window
-window2.show()
+# выполняем на экран window
+    window2.show()
 
 # чистый выход из приложения Pyqt5
-sys.exit(App.exec())
+    sys.exit(App.exec())
 
 # это конец >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

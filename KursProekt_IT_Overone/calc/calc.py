@@ -3,11 +3,12 @@ from PyQt5 import QtCore, QtGui
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 
+
 import sys
 
 
 # главный класс основного окна===========================================================================
-class Window(QMainWindow):
+class WindowV(QMainWindow):
 
     def __init__(self):
         super().__init__()
@@ -18,8 +19,31 @@ class Window(QMainWindow):
         # размеры закрепленные
         self.setGeometry(100, 100, 360, 350)
 
+
         # вызов функции
         self.UiComponents()
+        self.center()
+
+    # функция с запросом для выхода == == == == == == == == == == == == == == == == == == == == == == == == == == == == == == =
+
+    def closeEvent(self, event):
+
+        reply = QMessageBox.question(self, 'Докладываю',
+                                     "Вы действительно хотите на выход?", QMessageBox.Yes |
+                                     QMessageBox.No, QMessageBox.No)
+
+        if reply == QMessageBox.Yes:
+            event.accept()
+        else:
+            event.ignore()
+
+    # Функция для отбражения окна по центру монитора ===================================================
+    def center(self):
+
+        qr = self.frameGeometry()
+        cp = QDesktopWidget().availableGeometry().center()
+        qr.moveCenter(cp)
+        self.move(qr.topLeft())
 
     # функция создания кнопок=============================================================================
     def UiComponents(self):
@@ -234,18 +258,22 @@ class Window(QMainWindow):
         print(text[:len(text) - 1])
         self.label.setText(text[:len(text) - 1])
 
+
+
 # ВЫПОЛНЕНИЕ <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+if __name__ == '__main__':
     # создаем приложения Pyqt5
 
-App = QApplication(sys.argv)
+    App = QApplication(sys.argv)
 
 # создаем объект класса win1
-win1 = Window()
+    win1 = WindowV()
 
 # отображаем
-win1.show()
+    win1.show()
 
 # чистый выход из приложения Pyqt5
-sys.exit(App.exec())
+    sys.exit(App.exec())
 
 # это конец >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

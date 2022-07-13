@@ -53,7 +53,7 @@ class Image(qrcode.image.base.BaseImage):
     # Класс главное окно=======================================================================================
 
 
-class Window(QMainWindow):
+class WindowQ(QMainWindow):
 
     # конструктор
     def __init__(self):
@@ -132,17 +132,17 @@ class Window(QMainWindow):
 
 
 # ВЫПОЛНЕНИЕ <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
+if __name__ == '__main__':
 # создаем приложения Pyqt5
-app = QApplication(sys.argv)
+    app = QApplication(sys.argv)
 
 # создаем объект window класса Window
-window = Window()
+    window1 = WindowQ()
 
 # выполняем window
-window.show()
+    window1.show()
 
 # чистый выход из приложения Pyqt5
-sys.exit(app.exec_())
+    sys.exit(app.exec_())
 
 # А это уже  конец >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
