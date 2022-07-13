@@ -24,15 +24,15 @@ class MYWindow(QMainWindow):
         self.setWindowTitle("Диплом IT OVERONE Майсеёнок Юрий")
 
         # Размер главного окна
-        self.resize(1000, 500)
+        self.resize(800, 1050)
 
         # иконка
         self.setWindowIcon(QIcon('diplom.jpeg'))
 
         self.lbl = QLabel(
-            'Всем привет, это моя дипломная работа, ниже можно \nиспытать проекты. (наведя курсор мыши на кнопку, \nвысветится  подсказка о проекте)',
+            'Всем привет, \nэто моя дипломная работа, \nниже можно испытать проекты. \n(наведя курсор мыши на кнопку, \nвысветится  подсказка о проекте)',
             self)
-        self.lbl.setGeometry(50, -200, 900, 600)
+        self.lbl.setGeometry(100, -250, 700, 850)
         # self.lbl.move(50, 30)
         # self.lbl2 = QLabel('<u>Ещё одна метка</u>', self)
         # self.lbl2.move(50, 50)
@@ -54,7 +54,7 @@ class MYWindow(QMainWindow):
         # Кнопка paint*****************************************************************
         push_paint = QPushButton("ГАРЦУЮЩИЙ КАРАНДАШиК", self)
         # размеры и координаты кнопки
-        push_paint.setGeometry(50, 200, 400, 80)
+        push_paint.setGeometry(100, 400, 600, 100)
         # добавляем цветовой эффект
         c1_effect = QGraphicsColorizeEffect()
         c1_effect.setColor(Qt.red)
@@ -69,7 +69,7 @@ class MYWindow(QMainWindow):
         # Кнопка QrCode***************************************************************************
         push_QrCode = QPushButton("СОЗДАЙ СВОЙ QrCode", self)
         # размеры и координаты кнопки
-        push_QrCode.setGeometry(550, 200, 400, 80)
+        push_QrCode.setGeometry(100, 520, 600, 100)
         # добавляем цветовой эффект
         c2_effect = QGraphicsColorizeEffect()
         c2_effect.setColor(Qt.blue)
@@ -84,7 +84,7 @@ class MYWindow(QMainWindow):
         # Кнопка browse**************************************************************************
         push_browse = QPushButton("Браузер", self)
         # размеры и координаты кнопки
-        push_browse.setGeometry(550, 350, 400, 80)
+        push_browse.setGeometry(100, 640, 600, 100)
         # добавляем цветовой эффект
         c3_effect = QGraphicsColorizeEffect()
         c3_effect.setColor(Qt.black)
@@ -98,16 +98,30 @@ class MYWindow(QMainWindow):
         # Кнопка calc******************************************************************************
         push_calc = QPushButton("Калькулятор", self)
         # размеры и координаты кнопки
-        push_calc.setGeometry(50, 350, 400, 80)
+        push_calc.setGeometry(100, 760, 600, 100)
         # добавляем цветовой эффект
         c4_effect = QGraphicsColorizeEffect()
-        c4_effect.setColor(Qt.green)
+        c4_effect.setColor(Qt.yellow)
         push_calc.setGraphicsEffect(c4_effect)
         push_calc.setFont(QFont('Arial', 14))  # шрифт и высота текста
         # подсказка к кнопке
         push_calc.setToolTip('Обычный простой калькулятор ')
         #  При нажатии кнопки запускается функция 4
         push_calc.clicked.connect(self.fun4)
+
+        # Кнопка notepad******************************************************************************
+        push_notepad = QPushButton("Заметки", self)
+        # размеры и координаты кнопки
+        push_notepad.setGeometry(100, 880, 600, 100)
+        # добавляем цветовой эффект
+        c5_effect = QGraphicsColorizeEffect()
+        c5_effect.setColor(Qt.green)
+        push_notepad.setGraphicsEffect(c5_effect)
+        push_notepad.setFont(QFont('Arial', 14))  # шрифт и высота текста
+        # подсказка к кнопке
+        push_notepad.setToolTip('Можно делать заметки, сохранять, редактировать ')
+        #  При нажатии кнопки запускается функция 4
+        push_notepad.clicked.connect(self.fun5)
 
     # Функции запуска проектов при нажатии кнопок************************************************
     def fun1(self):
@@ -139,7 +153,6 @@ class MYWindow(QMainWindow):
         self.mainWin.show()
         # self.sys.exit(App.exec())
 
-
     def fun4(self):
         # импорт кода калькулятора из файла
 
@@ -151,6 +164,15 @@ class MYWindow(QMainWindow):
         self.win1.show()
         # self.sys.exit(App.exec())
 
+    def fun5(self):
+        # импорт кода калькулятора из файла
+
+        from notepad.notepad import MainWindowQW
+
+        # создаем объект класса window из файла
+        self.win5 = MainWindowQW()
+        # выполняем на экран window
+        self.win5.show()
 
     # функция с запросом для выхода=============================================================
     def closeEvent(self, event):
